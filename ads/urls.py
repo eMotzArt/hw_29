@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.conf.urls.static import static
 from django.urls import path
 import ads.views
 
@@ -24,4 +22,10 @@ urlpatterns = [
     path('locs/<int:pk>/update/', ads.views.LocationUpdateView.as_view()),
     path('locs/<int:pk>/delete/', ads.views.LocationDeleteView.as_view()),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    path('users/', ads.views.UsersListView.as_view()),
+    path('users/create/', ads.views.UserCreateView.as_view()),
+    path('users/<int:pk>', ads.views.UserDetailView.as_view()),
+    path('users/<int:pk>/update/', ads.views.UserUpdateView.as_view()),
+    path('users/<int:pk>/delete/', ads.views.UserDeleteView.as_view()),
+]
